@@ -3,8 +3,8 @@ class Question_Answer:
     #함수가 인스턴스 메소드라면 첫 인자를 'self'로 줘야 대상이 되는 인스턴스가 정확히 무엇인지 확인
     #__init__()은 반드시 첫 번째 인수로 self를 지정
     def __init__(self, problems, correct_answers):
-        problems = problems    # hint
-        self.correct_answers = self.correct_answers     # hint
+        self.problems = problems    # hint
+        self.correct_answers = correct_answers     # hint
         
     def problems_main(self):
         problems_first = self.problems[1], self.problems[3], self.problems[5], self.problems[7]
@@ -12,7 +12,7 @@ class Question_Answer:
 
         list_results = []
         
-        for question in range(1):    # hint
+        for question in range(4):    # hint
             question_a = problems_second[question]
             question_b = problems_first[question]
 
@@ -47,14 +47,14 @@ class Statistics:
         print("응답한 내용 : 1번 {}, 2번 {}, 3번 {}, 4번 {}".format(input_temp[0], input_temp[1], input_temp[2], input_temp[3]))
         print("당신 응답 합계 : {}점".format(score))
 
-        self.credit_result()
+        self.credit_result(score)
 
-    def credit_result(self):     # 학점 출력
+    def credit_result(self, score):     # 학점 출력
 
         # 학점 기준 | A : 30 이상, B : 20 점 이상,  F : 20점 미만 
-        if self.score >= 30:
+        if score >= 30:
             score_result = "A"
-        elif self.score >= 20:
+        elif score >= 20:
             score_result = "B"
         else:
             score_result = "F"
@@ -77,7 +77,7 @@ if __name__ == "__main__":
     list_corrects = [2, 1, 1, 2]
 
 
-    question_answer = Question_Answer(list_problems)    # hint
+    question_answer = Question_Answer(list_problems, list_corrects)    # hint
     result = question_answer.problems_main()
 
     statistics = Statistics()
